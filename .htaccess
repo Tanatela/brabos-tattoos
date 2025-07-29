@@ -1,0 +1,54 @@
+# Configuração para melhor suporte a vídeos
+AddType video/mp4 .mp4
+AddType video/webm .webm
+AddType video/ogg .ogv
+
+# Headers para cache e CORS
+<IfModule mod_headers.c>
+    # Cache para vídeos (30 dias)
+    <FilesMatch "\.(mp4|webm|ogv)$">
+        Header set Cache-Control "max-age=2592000, public"
+        Header set Access-Control-Allow-Origin "*"
+        Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+        Header set Access-Control-Allow-Headers "Content-Type"
+    </FilesMatch>
+</IfModule>
+
+# MIME types para vídeos
+<IfModule mod_mime.c>
+    AddType video/mp4 mp4
+    AddType video/webm webm
+    AddType video/ogg ogv
+    AddType video/x-msvideo avi
+    AddType video/quicktime mov
+</IfModule>
+
+# Compressão para melhor performance
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Configurações de segurança
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-Frame-Options DENY
+    Header always set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# Configuração para servir arquivos de vídeo corretamente
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Força o tipo correto para vídeos MP4
+    RewriteCond %{REQUEST_FILENAME} \.mp4$ [NC]
+    RewriteRule ^(.*)$ - [E=no-gzip:1,E=no-brotli:1]
+</IfModule>
+
+# Configurações específicas para vídeos grandes
+<IfModule mod_headers.c>
+    <FilesMatch "\.(mp4|webm|ogv)$">
+        Header set Accept-Ranges bytes
+        Header unset ETag
+    </FilesMatch>
+</IfModule>
+

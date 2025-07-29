@@ -895,23 +895,5 @@ body {
 
 /* Urgency Elements */
 .urgency {
-    background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-    color: white;
-    padding: 10px 20px;
-    border-radius: 25px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    display: inline-block;
-    margin: 1rem 0;
-    animation: glow 2s ease-in-out infinite alternate;
-}
-
-@keyframes glow {
-    from {
-        box-shadow: 0 0 5px #ff6b6b;
-    }
-    to {
-        box-shadow: 0 0 20px #ff6b6b, 0 0 30px #ff6b6b;
-    }
-}
-
+    background: linear-gradient(45deg
+(Content truncated due to size limit. Use line ranges to read in chunks)
