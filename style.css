@@ -742,6 +742,27 @@ body {
     border-radius: 10px;
     margin-top: 2rem;
     border-left: 4px solid #ffffff;
+    width: 90%; /* Ajuste para ocupar mais largura */
+    max-width: 350px; /* Limite a largura máxima */
+    box-sizing: border-box; /* Inclui padding e border no width */
+}
+
+@media (max-width: 768px) {
+    .testimonial {
+        position: static; /* Remove posicionamento absoluto em telas menores */
+        transform: none; /* Remove transform em telas menores */
+        margin-left: auto; /* Centraliza */
+        margin-right: auto; /* Centraliza */
+        margin-top: 1rem; /* Ajusta margem superior */
+        width: 90%; /* Garante que ocupe a largura disponível */
+        max-width: 400px; /* Limite para não ficar muito largo */
+    }
+    .about-image {
+        flex-direction: column; /* Empilha imagem e depoimento */
+    }
+    .tatuador-img {
+        margin-bottom: 1rem; /* Espaçamento entre imagem e depoimento */
+    }
 }
 
 .testimonial p {
@@ -873,24 +894,3 @@ body {
     }
 }
 
-@media (max-width: 768px) {
-    body {
-        overflow-x: hidden;
-    }
-
-    .container,
-    .nav-container {
-        padding: 0 10px;
-    }
-
-    .nav-menu {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: flex-start;
-    }
-
-    section, header, footer {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-}
